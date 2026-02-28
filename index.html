@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QuickBite - Food Delivery</title>
+  <title>Srinu - Food Delivery</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="header">
-    <div class="logo" onclick="scrollToTop()">🍔 QuickBite</div>
+    <div class="logo" onclick="scrollToTop()">🍔 Srinu</div>
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="#" onclick="filterItems('all')">Menu</a>
-      <a href="#" onclick="showRestaurants()">Restaurants</a>
-      <a href="#" onclick="scrollToFooter()">Contact</a>
-
-      <!-- Address link -->
-      <a id="addressLink" href="address.html" style="margin-left:1rem;">Address</a>
+      <a href="menu.html">Menu</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="#footer" onclick="scrollToFooter()">Contact</a>
+      <a href="address.html" id="addressLink">Address</a>
 
       <!-- Currency Selector -->
       <label for="currencySelect" class="muted" style="margin-left:1rem;">Currency:</label>
@@ -27,10 +25,10 @@
         <option value="GBP">GBP (£)</option>
       </select>
 
-      <!-- Auth: greet + login/logout -->
+      <!-- Auth -->
       <span id="greetUser" class="muted" style="margin-left:1rem;"></span>
-      <a id="loginLink" href="login.html" style="margin-left:.75rem;">Login</a>
-      <a id="logoutLink" href="#" onclick="logout()" style="display:none; margin-left:.75rem;">Logout</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <a href="#" id="logoutLink" onclick="logout()" style="display:none;">Logout</a>
 
       <!-- Cart -->
       <span class="cart-icon" onclick="toggleCart()" style="margin-left:1rem;">
@@ -82,14 +80,40 @@
       <span class="close-cart" onclick="toggleCart()">&times;</span>
     </div>
     <div id="cartItems"></div>
-    <div class="cart-total" id="cartTotal">Total: ₹0.00</div>
+
+    <!-- Totals Breakdown -->
+    <div class="totals-box">
+      <div class="total-row">
+        <span>Subtotal</span><span id="t_subtotal">—</span>
+      </div>
+      <div class="total-row">
+        <span>GST (5%)</span><span id="t_tax">—</span>
+      </div>
+      <div class="total-row">
+        <span>Delivery</span><span id="t_delivery">—</span>
+      </div>
+      <div class="total-row discount">
+        <span>Discount</span><span id="t_discount">—</span>
+      </div>
+      <div class="total-row grand">
+        <span>Total</span><span id="t_total">—</span>
+      </div>
+    </div>
+
+    <!-- Coupon -->
+    <div class="coupon-row">
+      <input type="text" id="couponInput" placeholder="Enter coupon (OFF10 / FLAT5 / FREESHIP)" />
+      <button class="secondary-btn" id="applyCouponBtn" onclick="applyCoupon()">Apply</button>
+      <button class="link-btn" id="removeCouponBtn" onclick="removeCoupon()" style="display:none;">Remove</button>
+    </div>
+
     <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     <div id="checkoutHints" class="muted" style="margin-top:8px;"></div>
   </div>
 
   <footer class="footer" id="footer">
-    <p>🍔 QuickBite - Food Delivery Application</p>
-    <p>&copy; 2024 QuickBite. All rights reserved.</p>
+    <p>🍔 Srinu - Food Delivery Application</p>
+    <p>&copy; 2026 Srinu. All rights reserved.</p>
     <p>Terms of Service | Privacy Policy | Contact Us</p>
   </footer>
 

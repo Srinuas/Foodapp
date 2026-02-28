@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>QuickBite - Restaurants</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="logo" onclick="scrollToTop()">🍔 QuickBite</div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="restaurants.html">Restaurants</a>
+    <a href="address.html" id="addressLink">Address</a>
+
+    <label for="currencySelect" class="muted" style="margin-left:1rem;">Currency:</label>
+    <select id="currencySelect" class="currency-select" onchange="onCurrencyChange(this.value)">
+      <option value="INR">INR (₹)</option>
+      <option value="USD">USD ($)</option>
+      <option value="EUR">EUR (€)</option>
+      <option value="GBP">GBP (£)</option>
+    </select>
+
+    <span id="greetUser" class="muted" style="margin-left:1rem;"></span>
+    <a href="login.html" id="loginLink">Login</a>
+    <a href="#" id="logoutLink" onclick="logout()" style="display:none;">Logout</a>
+
+    <span class="cart-icon" onclick="toggleCart()" style="margin-left:1rem;">
+      🛒 <span class="cart-count" id="cartCount">0</span>
+    </span>
+  </nav>
+</header>
+
+<section class="container">
+  <h2 class="section-title">Restaurants Near You</h2>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterRestaurants('all')">All</button>
+    <button class="filter-btn" onclick="filterRestaurants('italian')">Italian</button>
+    <button class="filter-btn" onclick="filterRestaurants('american')">American</button>
+    <button class="filter-btn" onclick="filterRestaurants('asian')">Asian</button>
+    <button class="filter-btn" onclick="filterRestaurants('healthy')">Healthy</button>
+    <button class="filter-btn" onclick="filterRestaurants('dessert')">Dessert</button>
+  </div>
+
+  <div class="food-items" id="restaurantsGrid"><!-- JS fills --></div>
+</section>
+
+<!-- Cart Sidebar (shared) -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <span class="close-cart" onclick="toggleCart()">&times;</span>
+  </div>
+  <div id="cartItems"></div>
+
+  <div class="totals-box">
+    <div class="total-row"><span>Subtotal</span><span id="t_subtotal">—</span></div>
+    <div class="total-row"><span>GST (5%)</span><span id="t_tax">—</span></div>
+    <div class="total-row"><span>Delivery</span><span id="t_delivery">—</span></div>
+    <div class="total-row discount"><span>Discount</span><span id="t_discount">—</span></div>
+    <div class="total-row grand"><span>Total</span><span id="t_total">—</span></div>
+  </div>
+
+  <div class="coupon-row">
+    <input type="text" id="couponInput" placeholder="Enter coupon (OFF10 / FLAT5 / FREESHIP)" />
+    <button class="secondary-btn" id="applyCouponBtn" onclick="applyCoupon()">Apply</button>
+    <button class="link-btn" id="removeCouponBtn" onclick="removeCoupon()" style="display:none;">Remove</button>
+  </div>
+
+  <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+</div>
+
+<footer class="footer" id="footer">
+  <p>&copy; 2024 QuickBite.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
