@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>QuickBite - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="scrollToTop()">🍔 QuickBite</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a id="addressLink" href="address.html" style="margin-left:1rem;">Address</a>
+
+      <!-- Currency Selector -->
+      <label for="currencySelect" class="muted" style="margin-left:1rem;">Currency:</label>
+      <select id="currencySelect" class="currency-select" onchange="onCurrencyChange(this.value)">
+        <option value="INR">INR (₹)</option>
+        <option value="USD">USD ($)</option>
+        <option value="EUR">EUR (€)</option>
+        <option value="GBP">GBP (£)</option>
+      </select>
+
+      <!-- Auth -->
+      <span id="greetUser" class="muted" style="margin-left:1rem;"></span>
+      <a id="loginLink" href="login.html" style="margin-left:.75rem;">Login</a>
+      <a id="logoutLink" href="#" onclick="logout()" style="display:none; margin-left:.75rem;">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Login</h2>
+
+    <form class="card form" id="loginForm">
+      <div class="form-row">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" placeholder="e.g., Srinivas Vanapalli" required/>
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required/>
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Phone (optional)</label>
+        <input id="phone" name="phone" type="tel" placeholder="+91 9xxxxxxxxx"/>
+      </div>
+
+      <button class="primary-btn" type="submit">Login</button>
+      <p class="muted" style="margin-top:8px;">No password. We’ll keep you signed in on this device (localStorage only).</p>
+    </form>
+  </div>
+
+  <footer class="footer" id="footer">
+    <p>&copy; 2024 QuickBite.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>QuickBite - Delivery Address</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="scrollToTop()">🍔 QuickBite</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+
+      <!-- Currency Selector -->
+      <label for="currencySelect" class="muted" style="margin-left:1rem;">Currency:</label>
+      <select id="currencySelect" class="currency-select" onchange="onCurrencyChange(this.value)">
+        <option value="INR">INR (₹)</option>
+        <option value="USD">USD ($)</option>
+        <option value="EUR">EUR (€)</option>
+        <option value="GBP">GBP (£)</option>
+      </select>
+
+      <!-- Auth -->
+      <span id="greetUser" class="muted" style="margin-left:1rem;"></span>
+      <a id="loginLink" href="login.html" style="margin-left:.75rem;">Login</a>
+      <a id="logoutLink" href="#" onclick="logout()" style="display:none; margin-left:.75rem;">Logout</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Select Delivery Address</h2>
+
+    <!-- Saved addresses -->
+    <div id="savedAddresses" class="card" style="padding:1rem">
+      <h3 style="margin-bottom:1rem;color:#2c3e50;">Saved Addresses</h3>
+      <div id="addrList"><!-- JS fills --></div>
+      <button class="primary-btn" style="margin-top:1rem" onclick="useSelectedAddress()">Use Selected Address</button>
+    </div>
+
+    <!-- Add new address -->
+    <h2 class="section-title" style="margin-top:2rem;">Add New Address</h2>
+    <form id="addrForm" class="card form">
+      <div class="form-row">
+        <label for="label">Label</label>
+        <select id="label" required>
+          <option value="Home">Home</option>
+          <option value="Work">Work</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" type="text" placeholder="Receiver name" required/>
+      </div>
+
+      <div class="form-row">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" placeholder="+91 9xxxxxxxxx" required/>
+      </div>
+
+      <div class="form-row">
+        <label for="line1">Address Line 1</label>
+        <input id="line1" type="text" placeholder="Flat / House no., Street" required/>
+      </div>
+
+      <div class="form-row">
+        <label for="line2">Address Line 2 (optional)</label>
+        <input id="line2" type="text" placeholder="Area / Landmark"/>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-row">
+          <label for="city">City</label>
+          <input id="city" type="text" placeholder="Hyderabad" required/>
+        </div>
+        <div class="form-row">
+          <label for="state">State</label>
+          <input id="state" type="text" placeholder="Telangana" required/>
+        </div>
+        <div class="form-row">
+          <label for="pincode">Pincode</label>
+          <input id="pincode" type="text" pattern="^[1-9][0-9]{5}$" placeholder="500001" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button class="primary-btn" type="submit">Save Address</button>
+        <button class="secondary-btn" type="button" onclick="useGeo()">Use My Current Location (lat/lon)</button>
+      </div>
+      <p id="geoHint" class="muted"></p>
+    </form>
+  </div>
+
+  <footer class="footer" id="footer">
+    <p>&copy; 2024 QuickBite.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
